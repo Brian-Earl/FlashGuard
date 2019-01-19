@@ -4,16 +4,16 @@
 
 <body>
 	<h1>Directory Tree</h1><p>
-	"testing.html">testing.html<br>
-	├── "testing.html/LICENSE">LICENSE<br>
-	├── "testing.html/README.md">README.md<br>
-	├── "testing.html/browser/">browser<br>
-	│   ├── <a href="testing.html/browser/browser.py">browser.py</a><br>
-	│   ├── <a href="testing.html/browser/chromedriver">chromedriver</a><br>
-	│   ├── <a href="testing.html/browser/client.py">client.py</a><br>
-	│   └── <a href="testing.html/browser/output.html">output.html</a><br>
-	└── <a href="testing.html/server/">server</a><br>
-	&nbsp;&nbsp;&nbsp; ├── <a href="testing.html/server/extension_handler.py">extension_handler.py</a><br>
+  testing.html<br>
+	├── LICENSE<br>
+	├── README.md<br>
+	├── browser<br>
+	│   ├── browser.py</a><br>
+	│   ├── chromedriver<br>
+	│   ├── client.py<br>
+	│   └── output.html<br>
+	└── server<br>
+	    ├── extension_handler.py<br>
 	&nbsp;&nbsp;&nbsp; ├── <a href="testing.html/server/main.py">main.py</a><br>
 	&nbsp;&nbsp;&nbsp; ├── <a href="testing.html/server/output.txt">output.txt</a><br>
 	&nbsp;&nbsp;&nbsp; ├── <a href="testing.html/server/test.html">test.html</a><br>
