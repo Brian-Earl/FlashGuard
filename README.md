@@ -2,9 +2,9 @@
 
 ## Directories and files included in this project:
 .
-|-- LICENSE
-|-- README.md
-|-- browser
+|-- LICENSE</br>
+|-- README.md</br>
+|-- browser</br>
 |   |-- browser.py
 |   |-- chromedriver
 |   |-- client.py
