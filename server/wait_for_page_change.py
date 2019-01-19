@@ -9,11 +9,13 @@ browser.maximize_window()
 
 while 1 :
     currentURL = browser.current_url
-    print (currentURL)
     try:
-        wait = WebDriverWait(browser, 3)
-        wait.until_not(EC.url_contains(currentURL))
+        wait = WebDriverWait(browser, 2)
+        wait.until(EC.url_changes(currentURL))
         currentURL = browser.current_url
-        print ("Gey has been defused")
+        if "watch?" in currentURL :
+            print ("Youtube video detected")
+            print (currentURL)
+        print ("Different page has been detected")
     except TimeoutException:
-        print("YOU ARE GAY")
+        print("SAME PAGE")
