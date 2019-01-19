@@ -12,8 +12,8 @@ while 1 :
     print (currentURL)
     try:
         wait = WebDriverWait(browser, 3)
-        wait.until_not(EC.url_contains(currentURL))
+        wait.until_not(EC.url_equals(currentURL))
         currentURL = browser.current_url
-        print ("Gey has been defused")
+        print ("Different page has been detected")
     except TimeoutException:
-        print("YOU ARE GAY")
+        print("SAME PAGE")
