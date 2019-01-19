@@ -1,16 +1,16 @@
 # upgraded-guacamole
 
 ## Directories and files included in this project:
-.
-├── LICENSE
-├── README.md
-├── browser
-│   ├── browser.py
-│   ├── chromedriver
-│   ├── client.py
-│   └── output.html
-└── server
-    ├── extension_handler.py
+.</br>
+├── LICENSE</br>
+├── README.md</br>
+├── browser</br>
+│   ├── browser.py</br>
+│   ├── chromedriver</br>
+│   ├── client.py</br>
+│   └── output.html</br>
+└── server</br>
+    ├── extension_handler.py</br>
     ├── main.py
     ├── output.txt
     ├── test.html
