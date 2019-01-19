@@ -1,6 +1,7 @@
 # upgraded-guacamole
 
 ## This project includes:
+<?xml version="1.0" encoding="UTF-8"?>
 <tree>
   <directory name=".">
     <file name="LICENSE"></file>
