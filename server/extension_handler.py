@@ -5,7 +5,7 @@ import video_process
 
 def make_server():
     s = socket.socket()
-    host = socket.getfqdn()
+    host = socket.gethostbyname('blujay.dyn.wpi.edu')
     port = 9995
     buffSize = 1024
     s.bind((host, port))
