@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.common.exceptions import TimeoutException, WebDriverException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import browser.client
 
 
 alert_script = "var r = confirm(\"Press a button!\"); if (r == true) { window.location.replace(\"http://www.youtube.com\") } else { alert('Proceed to video') }; console.log(txt);"
@@ -36,8 +37,8 @@ def browserScraper():
                     video = browser.find_element_by_id("movie_player")
                 except WebDriverException:
                     video = browser.find_element_by_id("player")
-                print ("Youtube video detected")
-                print (currentURL)
+                client.client_sock(currentURL)
+                
                 time.sleep(1)
                 video.click()
                 time.sleep(1)

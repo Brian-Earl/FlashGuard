@@ -1,13 +1,12 @@
 import random
 import socket
 import time
-import server.video_process
-import browser.browser
+import video_process
 
 def make_server():
     s = socket.socket()
     host = socket.getfqdn()
-    port = 9997
+    port = 9995
     buffSize = 1024
     s.bind((host, port))
     print('Starting server on', host, port)
@@ -18,15 +17,11 @@ def make_server():
         print ('Got connection from', client_host, client_port)
         data = c.recv(buffSize)
         if(b'youtube.com/watch' in data):
-            if(video_process.process_video_url(data[22:])):
-                browser.pause_vid()
-        c.sendall(b'HTTP/1.1 200 OK')
-        c.sendall(b'Content-Type: text/html')
-        c.sendall(b"""
-            <html>
-            <body>
-            <h1>this is my server!</h1>
-            </body>
-            </html>
-        """)
+            str_data = data.decode()
+            starting_index = str_data.index('http')
+            print(data[starting_index:])
+            response_val = video_process.process_video_url(str_data[starting_index:])
+            c.sendall(str(response_val).encode())
         c.close()
+
+make_server()
