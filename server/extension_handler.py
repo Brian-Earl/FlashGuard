@@ -2,11 +2,17 @@ import random
 import socket
 import time
 import video_process
+import json
+
+
 
 def make_server():
+    with open('../config.json') as f:
+        data = json.load(f)
+
     s = socket.socket()
-    host = socket.gethostbyname('blujay.dyn.wpi.edu')
-    port = 9995
+    host = socket.gethostbyname(data['server_host'])
+    port = data['server_port']
     buffSize = 1024
     s.bind((host, port))
     print('Starting server on', host, port)

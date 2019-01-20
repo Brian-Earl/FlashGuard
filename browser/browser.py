@@ -4,10 +4,14 @@ from selenium.common.exceptions import TimeoutException, WebDriverException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from browser import client
+import json
 
+
+with open('config.json') as f:
+    data = json.load(f)
 
 alert_one_script = "var r = confirm(\"WARNING\\nPart of this video could induce an epileptic seizure\\nPress the OK button to be redirected to the YouTube home page\\nor cancel to override\"); if (r == true) {window.location.replace(\"http://www.youtube.com\")};"
-browser = webdriver.Chrome(executable_path="/Users/JeffHarnois/Downloads/hackathon/upgraded-guacamole/browser/chromedriver")
+browser = webdriver.Chrome(executable_path=data['chromedriver_path'])
 youtube = "https://www.youtube.com/"
 browser.get(youtube)
 browser.maximize_window()
@@ -29,7 +33,7 @@ def browserScraper():
     while 1:
         currentURL = browser.current_url
         try:
-            wait = WebDriverWait(browser, 3)
+            wait = WebDriverWait(browser, 5)
             wait.until(EC.url_changes(currentURL))
             currentURL = browser.current_url
             if "watch?" in currentURL:
@@ -44,6 +48,9 @@ def browserScraper():
                     time.sleep(1)
                     pause_vid(alert_one_script)
                 elif(response_val == -1):
+                    time.sleep(1)
+                    video.click()
+                    time.sleep(1)
                     pause_vid("alert(\"Video failed to process and could be potentially dangerous\")")
                 else:
                     pass
