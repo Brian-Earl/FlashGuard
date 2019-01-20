@@ -19,7 +19,7 @@ FlashGuard
 ```
 
 ## How it works  
-The Chrome window that opens upon running this project is monitored using Selenium, a browser automation platform. When the user visits a youtube video url, Selenium detects it and sends a TCP request to a server side which we have implemented. The server side downloads the youtube video and parses frame-by-frame to detect flashes within the video. If enough flashes are detected in the video in a short enough time, the server will respond with a message that makes Selenium pause the video and create a warning pop-up. Additonally, videos that have already been processed have their results stored persistently so that reacurring videos are handled much faster by the server should they be viewed again.
+The Chrome window that opens upon running this project is monitored using Selenium, a browser automation platform. When the user visits a youtube video url, Selenium detects it and sends a TCP request to a server side which we have implemented. The server side downloads the youtube video and parses frame-by-frame to detect flashes within the video. If enough flashes are detected in the video in a short enough time, the server will respond with a message that makes Selenium pause the video and create a warning pop-up. Additonally, videos that have already been processed have their results stored persistently so that recurring videos are handled much faster by the server should they be viewed again.
 
 ## Installation
 *  Install dependencies<br>`pip3 install opencv-python youtube_dl numpy selenium`
