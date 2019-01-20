@@ -6,3 +6,4 @@ server/DS_Store
 server/.DS_store
 server/__pycache__/*
 config.json
+server/processed_vids
