@@ -1,4 +1,6 @@
 # FlashGuard
+HACKWPI 2019 SUBMISSION
+By Bryce Corbitt, Brian Earl, and Jeffrey Harnois
 
 ## Directories and files included in this project:
 ```bash
