@@ -6,14 +6,14 @@ from selenium.webdriver.support import expected_conditions as EC
 from browser import client
 
 
-alert_script = "var r = confirm(\"WARNING\\nPart of this video could induce an epileptic seizure\\nPress the OK button to be redirected to the YouTube home page\\nor cancel to override\"); if (r == true) {window.location.replace(\"http://www.youtube.com\")};"
+alert_one_script = "var r = confirm(\"WARNING\\nPart of this video could induce an epileptic seizure\\nPress the OK button to be redirected to the YouTube home page\\nor cancel to override\"); if (r == true) {window.location.replace(\"http://www.youtube.com\")};"
 browser = webdriver.Chrome(executable_path="/Users/JeffHarnois/Downloads/hackathon/upgraded-guacamole/browser/chromedriver")
 youtube = "https://www.youtube.com/"
 browser.get(youtube)
 browser.maximize_window()
 
 
-def pause_vid():
+def pause_vid(alert_script):
     browser.execute_script(alert_script)
     while 1:
         try:
@@ -37,11 +37,16 @@ def browserScraper():
                     video = browser.find_element_by_id("movie_player")
                 except WebDriverException:
                     video = browser.find_element_by_id("player")
-                if(client.client_sock(currentURL) == 1):
+                response_val = client.client_sock(currentURL)
+                if(response_val == 1):
                     time.sleep(1)
                     video.click()
                     time.sleep(1)
-                    pause_vid()
+                    pause_vid(alert_one_script)
+                elif(response_val == -1):
+                    pause_vid("alert(\"Video failed to process and could be potentially dangerous\")")
+                else:
+                    pass
             print ("Different page has been detected")
         except TimeoutException:
             print("SAME PAGE")
