@@ -11,6 +11,6 @@ def client_sock(curr_url):
     elif(response == "False"):
         return 0
     else:
-        return
+        return -1
 
 #print(client_sock('https://www.youtube.com/watch?v=hwMkMoSMK6o'))

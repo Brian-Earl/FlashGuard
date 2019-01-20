@@ -29,7 +29,7 @@ def browserScraper():
     while 1:
         currentURL = browser.current_url
         try:
-            wait = WebDriverWait(browser, 2)
+            wait = WebDriverWait(browser, 3)
             wait.until(EC.url_changes(currentURL))
             currentURL = browser.current_url
             if "watch?" in currentURL:
