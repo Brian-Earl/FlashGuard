@@ -5,6 +5,12 @@ def client_sock(curr_url):
     my_sock.sendall(b'POST / HTTP/1.1 HOST: ' + curr_url.encode())
     response = my_sock.recv(1024)
     my_sock.close()
-    return(response)
+    response = response.decode()
+    if(response == "True"):
+        return 1
+    elif(response == "False"):
+        return 0
+    else:
+        return
 
-print(client_sock('https://www.youtube.com/watch?v=hwMkMoSMK6o'))
+#print(client_sock('https://www.youtube.com/watch?v=hwMkMoSMK6o'))

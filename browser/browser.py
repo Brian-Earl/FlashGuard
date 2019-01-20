@@ -3,11 +3,11 @@ from selenium import webdriver
 from selenium.common.exceptions import TimeoutException, WebDriverException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import browser.client
+from browser import client
 
 
-alert_script = "var r = confirm(\"Press a button!\"); if (r == true) { window.location.replace(\"http://www.youtube.com\") } else { alert('Proceed to video') }; console.log(txt);"
-browser = webdriver.Chrome(executable_path="/home/brycetherower/PycharmProjects/upgraded-guacamole/browser/chromedriver")
+alert_script = "var r = confirm(\"WARNING\\nPart of this video could induce an epileptic seizure\\nPress the OK button to be redirected to the YouTube home page\\nor cancel to override\"); if (r == true) {window.location.replace(\"http://www.youtube.com\")};"
+browser = webdriver.Chrome(executable_path="/Users/JeffHarnois/Downloads/hackathon/upgraded-guacamole/browser/chromedriver")
 youtube = "https://www.youtube.com/"
 browser.get(youtube)
 browser.maximize_window()
@@ -37,15 +37,11 @@ def browserScraper():
                     video = browser.find_element_by_id("movie_player")
                 except WebDriverException:
                     video = browser.find_element_by_id("player")
-                client.client_sock(currentURL)
-                
-                time.sleep(1)
-                video.click()
-                time.sleep(1)
-                pause_vid()
-
+                if(client.client_sock(currentURL) == 1):
+                    time.sleep(1)
+                    video.click()
+                    time.sleep(1)
+                    pause_vid()
             print ("Different page has been detected")
         except TimeoutException:
             print("SAME PAGE")
-
-browserScraper()
